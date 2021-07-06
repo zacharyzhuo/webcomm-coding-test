@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <div th:replace="component/header.html :: header"></div>
+</head>
+
+nothing
+
+<body>
+    <div th:replace="component/menu.html :: menu"></div>
+
+    <!-- content section -->
+    <div class="ts narrow container" style=" margin-bottom: 35px; ">
+        <div style=" padding-top: 35px; ">
+            <!-- 與上面容器隔出距離 -->
+
+            <!-- left section -->
+            <div class="column" style=" padding: 35px; ">
+
+                <h2>首頁</h2>
+                <div class="ts section divider"></div>
+
+                <table class="ts table">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="product : ${products}">
+                            <td><span th:text="${product.id}"> id </span></td>
+                            <td><span th:text="${product.name}"> name </span></td>
+                            <td><span th:text="${product.price}"> price </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / left section -->
+        </div>
+    </div>
+    <!-- content section -->
+
+    <div th:replace="component/footer.html :: footer"></div>
+</body>
+
+</html>
