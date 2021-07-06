@@ -21,22 +21,43 @@ nothing
                 <h2>首頁</h2>
                 <div class="ts section divider"></div>
 
-                <table class="ts table">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="product : ${products}">
-                            <td><span th:text="${product.id}"> id </span></td>
-                            <td><span th:text="${product.name}"> name </span></td>
-                            <td><span th:text="${product.price}"> price </span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form id="productForm" class="ts form">
+
+                    <table class="ts sortable table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="product : ${products}">
+                                <td><span th:text="${product.id}">id</span></td>
+                                <td><span th:id="${product.id} + '_name'" th:text="${product.name}">name</span></td>
+                                <td><span th:id="${product.id} + '_price'" th:text="${product.price}">price</span></td>
+                                <td>
+                                    <div class="field">
+                                        <input type="text" th:name="${product.id}" required="required" placeholder="數量">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="full-width">
+                            <tr>
+                                <th>
+                                    <div class="field">
+                                        <input id="myName" type="text" placeholder="姓名" required="required" >
+                                    </div>
+                                </th>
+                                <th colspan="4">
+                                    <button id="btn" class="ts positive right floated small primary button">購買</button>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </form>
 
             </div>
             <!-- / left section -->
