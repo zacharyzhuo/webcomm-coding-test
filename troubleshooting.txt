@@ -6,6 +6,8 @@ https://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery
 thymeleaf動態建立標籤id方法
 https://stackoverflow.com/questions/35722528/how-to-set-the-id-attribute-of-html-element-dynamically-with-thymeleaf
 
+------------------------------------------------------------------------------------------------------
+
 3.1
 資料表id要AUTO_INCREMENT
 
@@ -14,3 +16,16 @@ map foreach
 https://dotblogs.com.tw/duke/2019/11/22/223546
 
 有錯誤的程式檔案遺留在target資料夾中
+
+條件判斷顯示某元件（thymeleaf）
+https://autoposter.pixnet.net/blog/post/117377720-spring-boot%28四%29
+
+重新導向帶參數
+http://www.51gjie.com/javaweb/955.html
+
+
+------------------------------------------------------------------------------------------------------
+
+4
+RESTapi參考此網站
+https://ithelp.ithome.com.tw/articles/10196155

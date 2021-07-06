@@ -9,3 +9,6 @@ insert into product
 values (0, '蘋果', 10, 10),
 (0, '香蕉', 12, 10),
 (0, '西瓜', 20, 10);
+
+insert into product
+values (0, '鳳梨', 80, 10);
