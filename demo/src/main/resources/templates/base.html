@@ -1,0 +1,229 @@
+<!-- base.html -->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>FeedPet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- tocas ui -->
+    <script src="{% static 'js/tocas.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/tocas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- jquery -->
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+
+    <!-- datatable -->
+    <script type="text/javascript" charset="utf8" src="{% static 'js/jquery.dataTables.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.css' %}">
+
+    <!-- mapbox -->
+    <script src="{% static 'js/mapbox-gl.js' %}"></script>
+    <link href="{% static 'css/mapbox-gl.css' %}" rel='stylesheet' />
+
+    <link rel="shortcut icon" href="#" />
+
+    <style type="text/css">
+        a.title-link:hover {
+            color: #34b2db !important;
+        }
+
+        a.title-link:active {
+            color: #2075c1 !important;
+        }
+
+        #menu-color-id {
+            background: #f7f7f7;
+        }
+
+        #menu-color-id a {
+            color: #5a5a5a;
+        }
+
+        /* .topimg {
+            background-image: url("{% static 'images/slide/007.jpg' %}");
+            background-size: cover;
+            height: 500px;
+            display: flex;
+            padding-bottom: 20px;
+            padding-right: 30px;
+            justify-content: flex-end;
+            align-items: flex-end;
+            border-radius: 5px
+        }
+
+        .topimg h2 {
+            color: #f7f7f7 !important;
+            text-shadow: 2px 2px #5a5a5a;
+        } */
+
+
+        #mypet_img {
+            object-fit: cover;
+            height: 250px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="ts top fixed fluid basic link big menu" id="menu-color-id">
+
+        <!-- ejs : align to post page or index page -->
+
+        <div class="ts narrow container " style=" padding-left: 25px; ">
+
+            <a class="item" href="{% url 'master:index' %}">Home</a>
+            <a class="item" href="{% url 'master:mypet' %}">My Pet</a>
+            <a class="item" href="{% url 'feed:feed' %}">Feed</a>
+            <a class="item" href="{% url 'hotel:hotel' %}">Hotel</a>
+            <div class="right menu">
+                {% if user.is_authenticated %}
+                <div class="ts item dropdown">
+                    <div class="text">
+                        Hi, {{ user.name }} .
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="{% url 'master:profile' %}">
+                            <i class="user icon"></i>個人資料
+                        </a>
+                        <a class="item" href="{% url 'feed:my_favor_feed' %}">
+                            <i class="like icon"></i>最愛飼料
+                        </a>
+                        <a class="item" href="{% url 'hotel:my_favor_hotel' %}">
+                            <i class="home icon"></i>最愛旅館
+                        </a>
+                        <div class="section divider"></div>
+                        <a class="item" onclick="showDimmer_logout()">
+                            <i class="sign out icon"></i>登出
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <a class="item" href="{% url 'master:register' %}">註冊</a>
+                <a class="item" href="{% url 'master:login' %}">登入</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- the end of navigation -->
+
+    <!-- big bang title -->
+    <header class="ts massive basic borderless extra vertically padded cover slate" style="background-color: #CCFF33;">
+        <div class="image">
+            <img src="{% static 'images/banner.png' %}">
+        </div>
+        <div class="ts narrow container relaxed stackable grid" id="big-bang-title" style="padding-left: 35px;">
+            <!-- Title -->
+            <h1 class="ts eleven wide column header be-center-h1">
+                <span style="color: #404040;" id="big-title">FeedPet</span>
+                <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+            </h1>
+            <!-- the end of title -->
+        </div>
+    </header>
+    <!-- the end of big bang title -->
+
+    <!-- content section -->
+    <div class="ts narrow container" style=" margin-bottom: 35px; ">
+        <div style=" padding-top: 35px; ">
+            <!-- 與上面容器隔出距離 -->
+
+            <!-- left section -->
+            <div class="column" style=" padding: 35px; ">
+
+                <!-- 彈跳訊息 -->
+                <div class="ts modals dimmer">
+                    <dialog id="closableModal_logout" class="ts closable tiny modal">
+                        <div class="content">
+                            <p>
+                                確定要登出嗎？
+                            </p>
+                        </div>
+                        <div class="actions">
+                            <button class="ts deny button">
+                                別
+                            </button>
+                            <button class="ts negative button" onclick="location.href='/logout'">
+                                對啦
+                            </button>
+                        </div>
+                    </dialog>
+                </div>
+                <!-- 彈跳訊息 -->
+
+                <!-- 提示訊息 -->
+                {% for message in messages %}
+                <div class="ts {{message.tags}} dismissable message">
+                    <button class="ts close button"></button>
+                    <div class="header">{{ message }}</div>
+                </div>
+                {% endfor %}
+                <!-- 提示訊息 -->
+
+                <!-- 點心條 -->
+                <div class="ts snackbar">
+                    <div class="content"></div>
+                </div>
+                <!-- 點心條 -->
+
+                <!-- 讀取指示器 -->
+                <!-- <div class="ts active inverted dimmer" id="loading">
+                    <div class="ts text loader">讀取中</div>
+                </div> -->
+                <!-- 讀取指示器 -->
+
+                {% block header %}{% endblock header %}
+                <div class="ts section divider"></div>
+                {% block content %}{% endblock content %}
+
+                <!-- / the end of articles -->
+            </div>
+            <!-- / left section -->
+
+        </div>
+    </div>
+    <!-- the end of content section -->
+
+    <!-- footer -->
+    <div class="ts attached secondary segment">
+        <div class="ts narrow container">
+            <br>
+            <div class="ts large center aligned header">
+                <div class="smaller sub header">
+                    軟體工程期末專案<br>
+                    /admin<br>
+                    acount : zachary<br>
+                    password : 123
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <!-- the end of footer -->
+
+    <script type="text/javascript">
+        // index subtitle
+        const slogans = ["安安你好！ 這裡是FeedPet", "這是一個寵物餵食紀錄與推薦網站", "趕快登入加入你的寵物吧", "快點喔！！！"];
+    </script>
+    <script type="text/javascript" src="{% static 'js/slogan.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mypet.js' %}"></script>
+    <script>
+        var user = "{{user.id}}"
+    </script>
+    <script type="text/javascript" src="{% static 'js/feed.js' %}"></script>
+    <script>
+        var geo_add = '{{geo_add|safe}}'
+    </script>
+    <script type="text/javascript" src="{% static 'js/hotel.js' %}"></script>
+</body>
+
+</html>

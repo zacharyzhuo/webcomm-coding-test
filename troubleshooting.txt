@@ -8,3 +8,9 @@ https://stackoverflow.com/questions/35722528/how-to-set-the-id-attribute-of-html
 
 3.1
 資料表id要AUTO_INCREMENT
+
+3.2 & 3.3
+map foreach
+https://dotblogs.com.tw/duke/2019/11/22/223546
+
+有錯誤的程式檔案遺留在target資料夾中

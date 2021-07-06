@@ -21,7 +21,18 @@ nothing
                 <h2>首頁</h2>
                 <div class="ts section divider"></div>
 
-                <form id="productForm" class="ts form">
+                <div id="msg" th:if="${message}" th:class="'ts ' + ${type} + ' message'">
+                    <button class="ts close button"></button>
+                    <div class="header" th:text="${message}"></div>
+                </div>
+
+                <!-- 點心條 -->
+                <div class="ts snackbar">
+                    <div class="content"></div>
+                </div>
+                <!-- 點心條 -->
+
+                <form id="productForm" class="ts form" method="post" enctype="multipart/form-data" th:action="@{/buy}">
 
                     <table class="ts sortable table">
                         <thead>
@@ -50,7 +61,7 @@ nothing
                             <tr>
                                 <th>
                                     <div class="field">
-                                        <input id="myName" type="text" placeholder="姓名" required="required" >
+                                        <input id="myName" th:name="name" type="text" placeholder="姓名" required="required" >
                                     </div>
                                 </th>
                                 <th colspan="4">

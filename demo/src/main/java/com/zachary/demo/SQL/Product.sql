@@ -4,3 +4,8 @@ create table product(
 	price int(50) not null,
 	inventory int(50) not null
 );
+
+insert into product
+values (0, '蘋果', 10, 10),
+(0, '香蕉', 12, 10),
+(0, '西瓜', 20, 10);
