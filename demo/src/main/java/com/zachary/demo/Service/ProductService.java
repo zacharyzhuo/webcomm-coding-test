@@ -1,40 +1,35 @@
 package com.zachary.demo.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.zachary.demo.Dao.ProductRepository;
 import com.zachary.demo.Entity.Product;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductService implements CommandLineRunner{
 
-    private List<Product> productList = new ArrayList<>();
+    private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public void run(String...args) throws Exception {
-        Product p1 = new Product();
-        p1.setId(1);
-        p1.setName("蘋果");
-        p1.setPrice(10);
-        productList.add(p1);
+        // Delete all
+        productRepository.deleteAll();
 
-        Product p2 = new Product();
-        p2.setId(2);
-        p2.setName("香蕉");
-        p2.setPrice(12);
-        productList.add(p2);
-
-        Product p3 = new Product();
-        p3.setId(3);
-        p3.setName("西瓜");
-        p3.setPrice(20);
-        productList.add(p3);
+        // Crete products
+        productRepository.save(new Product("蘋果", 10, 10));
+        productRepository.save(new Product("香蕉", 12, 10));
+        productRepository.save(new Product("西瓜", 20, 10));
+        
+        productRepository.findAll().forEach((product) -> {
+            logger.info("{}", product);
+        });
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
 }

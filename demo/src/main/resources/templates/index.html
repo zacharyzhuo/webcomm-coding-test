@@ -29,14 +29,16 @@ nothing
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Price</th>
+                                <th>Inventory</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="product : ${products}">
                                 <td><span th:text="${product.id}">id</span></td>
-                                <td><span th:id="${product.id} + '_name'" th:text="${product.name}">name</span></td>
-                                <td><span th:id="${product.id} + '_price'" th:text="${product.price}">price</span></td>
+                                <td><span th:id="${product.id} + '_name'" th:text="${product.name}"></span></td>
+                                <td><span th:id="${product.id} + '_price'" th:text="${product.price}"></span></td>
+                                <td><span th:id="${product.id} + '_inventory'" th:text="${product.inventory}"></span></td>
                                 <td>
                                     <div class="field">
                                         <input type="text" th:name="${product.id}" required="required" placeholder="數量">

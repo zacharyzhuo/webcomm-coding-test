@@ -1,6 +1,6 @@
 package com.zachary.demo.Controller;
 
-import com.zachary.demo.Service.ProductService;
+import com.zachary.demo.Dao.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
+    private ProductRepository productRepository;
 
     @GetMapping("/")
     public String ShowProduct(Model model) {
-        System.out.print(productService.getProductList());
-        model.addAttribute("products", productService.getProductList());
+        model.addAttribute("products", productRepository.findAll());
         return "index";
     }
 

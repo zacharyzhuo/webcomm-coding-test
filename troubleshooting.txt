@@ -1,1 +1,10 @@
-2.2 以動態的抓取使用者輸入商品數量欄位，並尋找對應的商品價格，計算總金額
+2.2 
+由前端動態獲取表格輸入欄位值
+$.each($('#myForm').serializeArray(), function(i, field)
+https://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery
+
+thymeleaf動態建立標籤id方法
+https://stackoverflow.com/questions/35722528/how-to-set-the-id-attribute-of-html-element-dynamically-with-thymeleaf
+
+3.1
+資料表id要AUTO_INCREMENT
