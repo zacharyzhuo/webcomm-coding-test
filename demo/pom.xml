@@ -34,6 +34,7 @@
 			<scope>test</scope>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -84,6 +85,8 @@
 			<version>2.8.5</version>
 		</dependency>
 
+=======
+>>>>>>> parent of ff93675... Q2.1
 =======
 >>>>>>> parent of ff93675... Q2.1
 	</dependencies>
