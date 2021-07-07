@@ -5,8 +5,6 @@
     <div th:replace="component/header.html :: header"></div>
 </head>
 
-nothing
-
 <body>
     <div th:replace="component/menu.html :: menu"></div>
 
@@ -25,12 +23,6 @@ nothing
                     <button class="ts close button"></button>
                     <div class="header" th:text="${message}"></div>
                 </div>
-
-                <!-- 點心條 -->
-                <div class="ts snackbar">
-                    <div class="content"></div>
-                </div>
-                <!-- 點心條 -->
 
                 <form id="productForm" class="ts form" method="post" enctype="multipart/form-data" th:action="@{/buy}">
 

@@ -29,3 +29,12 @@ http://www.51gjie.com/javaweb/955.html
 4
 RESTapi參考此網站
 https://ithelp.ithome.com.tw/articles/10196155
+
+
+5
+加入一些呼叫api相關dependency
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/709496/
+https://www.twblogs.net/a/5d5492b4bd9eee541c319d25
+
+呼叫api程式碼參考
+https://www.youtube.com/watch?v=y2uC_s49Ydo

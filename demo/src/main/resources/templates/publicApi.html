@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <div th:replace="component/header.html :: header"></div>
+</head>
+
+<body>
+    <div th:replace="component/menu.html :: menu"></div>
+
+    <!-- content section -->
+    <div class="ts narrow container" style=" margin-bottom: 35px; ">
+        <div style=" padding-top: 35px; ">
+            <!-- 與上面容器隔出距離 -->
+
+            <!-- left section -->
+            <div class="column" style=" padding: 35px; ">
+
+                <h2>Public API</h2>
+                <div class="ts section divider"></div>
+
+                <div id="msg" th:if="${message}" th:class="'ts ' + ${type} + ' message'">
+                    <button class="ts close button"></button>
+                    <div class="header" th:text="${message}"></div>
+                </div>
+
+                <table class="ts very basic table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <!-- <th>Created_at</th>
+                            <th>Updated_at</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="result : ${results}">
+                            <td><span th:text="${result.name}">id</span></td>
+                            <td><span th:text="${result.email}"></span></td>
+                            <td><span th:text="${result.gender}"></span></td>
+                            <td><span th:text="${result.status}"></span></td>
+                            <!-- <td><span th:text="${result.created_at}"></span></td>
+                            <td><span th:text="${result.update_at}"></span></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / left section -->
+        </div>
+    </div>
+    <!-- content section -->
+
+    <div th:replace="component/footer.html :: footer"></div>
+</body>
+
+</html>

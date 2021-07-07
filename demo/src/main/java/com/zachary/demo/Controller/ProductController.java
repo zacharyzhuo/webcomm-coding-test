@@ -14,7 +14,7 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @GetMapping("/")
-    public String ShowProduct(Model model) {
+    public String showProduct(Model model) {
         model.addAttribute("products", productRepository.findAll());
         return "index";
     }
